@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         insert_btn.setOnClickListener(v -> {addCategory();});
 
         viewModel.getAllExpenses().observe(this , total ->{ // البونص
-                 setTitle("Total : " +total); 
+                 setTitle("Total : " +total);
         });
 
     }
