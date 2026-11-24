@@ -46,4 +46,8 @@ public class Repository {
     LiveData<List<CategoryTotal>> getCategoriesWithTotal(){
         return categoryDao.getCategoriesWithTotal();
     }
+
+    LiveData<Double> getAllExpenses(){
+        return expenseDao.getAllExpenses();
+    }
 }

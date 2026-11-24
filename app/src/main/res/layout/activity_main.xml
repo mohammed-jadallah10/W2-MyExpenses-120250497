@@ -9,17 +9,40 @@
 
     tools:context=".MainActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Categorys"
-        android:textSize="30sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:fontFamily="monospace"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        />
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Categorys"
+            android:textSize="30sp"
+            android:layout_marginStart="15dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:layout_marginTop="20dp"
+            />
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textSize="18sp"
+            android:gravity="right"
+            android:layout_marginEnd="15dp"
+            android:textColor="#769826"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+
+            android:layout_marginTop="20dp"
+            />
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/category_name"
@@ -57,7 +80,7 @@
         android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        android:background="#522B5B"
+        android:background="#769826"
         android:textColor="@color/white"
         android:fontFamily="monospace"
         android:textAllCaps="false"
@@ -68,7 +91,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="12dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"

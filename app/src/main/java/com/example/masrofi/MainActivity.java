@@ -5,22 +5,37 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
     RecyclerView rv ;
     EditText categoryName , categoryBudget ;
     CategoryAdapter adapter ;
     MyViewModel viewModel;
+    TextView ExpenseTotal ;
     Button insert_btn ;
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +47,16 @@ public class MainActivity extends AppCompatActivity {
         categoryName = findViewById(R.id.category_name);
         categoryBudget = findViewById(R.id.category_budget);
         insert_btn = findViewById(R.id.insert_btn);
+        ExpenseTotal = findViewById(R.id.total);
         adapter = new CategoryAdapter(this ::intentToExpense , this::deleteItem);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(adapter);
         viewModel.getCategoriesWithTotal().observe(this , adapter ::setCategories);
         insert_btn.setOnClickListener(v -> {addCategory();});
 
+        viewModel.getAllExpenses().observe(this , total ->{ // البونص
+            ExpenseTotal.setText("Total : " + total);
+        });
 
     }
 
@@ -71,4 +90,7 @@ public class MainActivity extends AppCompatActivity {
         i.putExtra("name" , category.name);
         startActivity(i);
     }
+
+
+
 }

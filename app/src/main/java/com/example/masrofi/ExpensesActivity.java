@@ -53,9 +53,12 @@ public class ExpensesActivity extends AppCompatActivity {
          FloatingActionButton back_btn = findViewById(R.id.back);
          back_btn.setOnClickListener(v -> {
              Intent intent = new Intent(ExpensesActivity.this , MainActivity.class);
+
              startActivity(intent);
 
          });
+
+
 
 
 
@@ -71,7 +74,9 @@ public class ExpensesActivity extends AppCompatActivity {
         String expenseDescription =description.getText().toString().trim();
         int expenseAmount = Integer.parseInt(amount.getText().toString().trim());
         Expense e = new Expense(expenseDescription , expenseAmount , System.currentTimeMillis() , categoryId);
+
         viewModel.insertExpense(e);
+        setResult(RESULT_OK);
 
 
     }

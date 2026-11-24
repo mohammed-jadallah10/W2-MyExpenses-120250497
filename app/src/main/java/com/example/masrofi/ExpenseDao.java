@@ -17,4 +17,7 @@ public interface ExpenseDao {
 
     @Query("Select * from expenses Where category_id = :categoryId" )
     LiveData<List<Expense>> getByCategory(int categoryId);
+
+    @Query("Select COALESCE(SUM(amount) , 0) From expenses") // البونص
+    LiveData<Double> getAllExpenses();
 }

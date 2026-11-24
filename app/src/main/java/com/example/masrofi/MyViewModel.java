@@ -40,4 +40,8 @@ public class MyViewModel extends AndroidViewModel {
     LiveData<List<CategoryTotal>> getCategoriesWithTotal(){
         return repository.getCategoriesWithTotal();
     }
+
+    LiveData<Double> getAllExpenses(){
+        return repository.getAllExpenses();
+    }
 }
