@@ -1,9 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Masrofi" parent="Theme.Design.Light.NoActionBar">
+    <style name="Base.Theme.Masrofi" parent="Theme.Design.Light">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="actionBarStyle">@style/MyActionBar</item>
     </style>
+    <style name="MyActionBar" parent="Widget.AppCompat.ActionBar.Solid">
+        <item name="background">@color/my_bar</item>
+        <item name="titleTextStyle">@style/MyTitle</item>
 
+    </style>
+    <style name="MyTitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
     <style name="Theme.Masrofi" parent="Base.Theme.Masrofi" />
 </resources>

@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-@Database(entities = {Category.class , Expense.class} , version = 1 , exportSchema = false)
+@Database(entities = {Category.class , Expense.class} , version = 2 , exportSchema = false)
 public abstract class ExpenseDatabase extends RoomDatabase {
     public abstract ExpenseDao expenseDao();
     public abstract CategoryDao categoryDao();
@@ -20,7 +20,7 @@ public abstract class ExpenseDatabase extends RoomDatabase {
     public static synchronized ExpenseDatabase getInstance(Context context){
         if (Instance == null){
             Instance = Room.databaseBuilder(context.getApplicationContext() , ExpenseDatabase.class ,
-                    "db.expenses").fallbackToDestructiveMigration()
+                    "expenses.db").fallbackToDestructiveMigration()
                     .build();
         }
         return Instance;

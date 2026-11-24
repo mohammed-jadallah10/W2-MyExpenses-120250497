@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     EditText categoryName , categoryBudget ;
     CategoryAdapter adapter ;
     MyViewModel viewModel;
-    TextView ExpenseTotal ;
+
     Button insert_btn ;
 
 
@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         categoryName = findViewById(R.id.category_name);
         categoryBudget = findViewById(R.id.category_budget);
         insert_btn = findViewById(R.id.insert_btn);
-        ExpenseTotal = findViewById(R.id.total);
         adapter = new CategoryAdapter(this ::intentToExpense , this::deleteItem);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(adapter);
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         insert_btn.setOnClickListener(v -> {addCategory();});
 
         viewModel.getAllExpenses().observe(this , total ->{ // البونص
-            ExpenseTotal.setText("Total : " + total);
+                 setTitle("Total : " +total); 
         });
 
     }
@@ -81,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
         double category_budget = Double.parseDouble(categoryBudget.getText().toString().trim());
         Category c = new Category(category_name , category_budget);
         viewModel.insertCategory(c);
+
+        categoryName.setText("");
+        categoryBudget.setText("");
 
     }
 

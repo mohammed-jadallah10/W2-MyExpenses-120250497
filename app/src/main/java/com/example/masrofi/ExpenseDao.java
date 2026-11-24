@@ -15,7 +15,7 @@ public interface ExpenseDao {
     @Delete
     void deleteExpense(Expense expense);
 
-    @Query("Select * from expenses Where category_id = :categoryId" )
+    @Query("Select * from expenses Where category_id = :categoryId ORDER BY createdAt DESC" )
     LiveData<List<Expense>> getByCategory(int categoryId);
 
     @Query("Select COALESCE(SUM(amount) , 0) From expenses") // البونص

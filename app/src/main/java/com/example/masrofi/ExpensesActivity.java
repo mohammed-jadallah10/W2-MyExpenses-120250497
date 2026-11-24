@@ -36,8 +36,8 @@ public class ExpensesActivity extends AppCompatActivity {
         Intent i = getIntent();
         String name = i.getStringExtra("name");
         categoryId= i.getIntExtra("id" , 1);
-        address.setText(name);
-        address.setVisibility(View.VISIBLE);
+
+        setTitle(name); // وضع الاسم تبع ال item اللي دخلنا من خلالو في الAction Bar
 
          viewModel = new ViewModelProvider(this).get(MyViewModel.class);
          rv = findViewById(R.id.so_recycler);
@@ -52,11 +52,10 @@ public class ExpensesActivity extends AppCompatActivity {
 
          FloatingActionButton back_btn = findViewById(R.id.back);
          back_btn.setOnClickListener(v -> {
-             Intent intent = new Intent(ExpensesActivity.this , MainActivity.class);
-
-             startActivity(intent);
-
+             finish();
          });
+
+
 
 
 
@@ -72,11 +71,15 @@ public class ExpensesActivity extends AppCompatActivity {
 
     private void addExpense(){
         String expenseDescription =description.getText().toString().trim();
-        int expenseAmount = Integer.parseInt(amount.getText().toString().trim());
+        double expenseAmount = Double.parseDouble(amount.getText().toString().trim());
         Expense e = new Expense(expenseDescription , expenseAmount , System.currentTimeMillis() , categoryId);
-
         viewModel.insertExpense(e);
-        setResult(RESULT_OK);
+
+        description.setText("");
+        amount.setText("");
+
+
+
 
 
     }
